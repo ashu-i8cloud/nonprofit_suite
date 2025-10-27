@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_event_form_meals" model="ir.ui.view">
+        <field name="name">event.event.form.meals</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <!-- Put the toggle near top of the form -->
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="is_meal_service"/>
+            </xpath>
+
+            <!-- Add a tab that is visible only when meal service is enabled -->
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Food Prep" invisible="not is_meal_service">
+                    <group>
+                        <field name="total_meals_requested" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+
+    </record>
+</odoo>

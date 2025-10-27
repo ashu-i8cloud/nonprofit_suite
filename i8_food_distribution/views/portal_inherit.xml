@@ -1,0 +1,32 @@
+<odoo>
+    <template id="page_event_detail_meal_inherit" inherit_id="i8_volunteer_demo.page_event_detail">
+        <xpath expr="//div[@class='container my-4 i8-volunteer-page']//h3" position="after">
+            <t t-if="event.is_meal_service">
+                <div class="alert alert-info mt-2">
+                    <strong>Total meals requested for this event:</strong>
+                    <t t-esc="event.total_meals_requested"/>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//table/thead/tr" position="inside">
+            <t t-if="event.is_meal_service">
+                <th style="width:140px;">Meals</th>
+                <th style="width:180px;">Quick Sign-up</th>
+            </t>
+        </xpath>
+        <xpath expr="//table/tbody/t/tr" position="inside">
+            <t t-if="event.is_meal_service">
+                <td>
+                    <input type="number" min="1" max="20" value="1"
+                           t-att-id="'i8-meals-' + str(a.id)"
+                           class="form-control form-control-sm"/>
+                </td>
+                <td>
+                    <button t-att-data-id="a.id" class="btn btn-outline-primary btn-sm i8-signup-meal">
+                        Request &amp; Sign Up
+                    </button>
+                </td>
+            </t>
+        </xpath>
+    </template>
+</odoo>

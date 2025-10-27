@@ -1,0 +1,4 @@
+<odoo>
+    <menuitem id="menu_i8_food_root" name="Food Distribution" parent="event.menu_event_configuration" sequence="99"
+              groups="base.group_user"/>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+  <!-- Form: show Meal Quantity only when the event has Meal Service enabled -->
+  <record id="view_volunteer_shift_form_meal" model="ir.ui.view">
+    <field name="name">volunteer.shift.form.meal</field>
+    <field name="model">volunteer.shift</field>
+    <!-- adjust this ref if your form xmlid is different -->
+    <field name="inherit_id" ref="i8_volunteer_demo.view_volunteer_shift_form"/>
+    <field name="arch" type="xml">
+      <!-- drop the field inside the first group on the sheet; move if you prefer another spot -->
+      <xpath expr="//sheet//group" position="inside">
+        <field name="meal_quantity"
+               invisible="not event_id.is_meal_service"/>
+      </xpath>
+    </field>
+  </record>
+
+  <!-- Tree/List: show a meals column, but hide it when not relevant -->
+  <record id="view_volunteer_shift_tree_meal" model="ir.ui.view">
+    <field name="name">volunteer.shift.tree.meal</field>
+    <field name="model">volunteer.shift</field>
+    <!-- adjust this ref if your tree/list xmlid is different -->
+    <field name="inherit_id" ref="i8_volunteer_demo.view_volunteer_shift_tree"/>
+    <field name="arch" type="xml">
+      <xpath expr="//list" position="inside">
+        <field name="meal_quantity"
+               invisible="not event_id.is_meal_service"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>
