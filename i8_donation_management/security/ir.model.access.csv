@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_npo_donation_user,npo.donation.user,model_npo_donation,base.group_user,1,1,1,1
+access_npo_fund_usage_user,npo.fund.usage.user,model_npo_fund_usage,base.group_user,1,1,1,1

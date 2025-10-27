@@ -1,0 +1,41 @@
+
+<odoo>
+  <record id="view_npo_donation_tree" model="ir.ui.view">
+    <field name="name">npo.donation.tree</field>
+    <field name="model">npo.donation</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="date"/>
+        <field name="donor_id"/>
+        <field name="purpose"/>
+        <field name="amount"/>
+      </list>
+    </field>
+  </record>
+
+  <record id="view_npo_donation_form" model="ir.ui.view">
+    <field name="name">npo.donation.form</field>
+    <field name="model">npo.donation</field>
+    <field name="arch" type="xml">
+      <form string="Donation">
+        <sheet>
+          <group>
+            <field name="name" readonly="1"/>
+            <field name="date"/>
+            <field name="donor_id"/>
+            <field name="purpose"/>
+            <field name="amount"/>
+            <field name="notes"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_npo_donation" model="ir.actions.act_window">
+    <field name="name">Donations</field>
+    <field name="res_model">npo.donation</field>
+    <field name="view_mode">list,form,pivot,graph</field>
+  </record>
+</odoo>
