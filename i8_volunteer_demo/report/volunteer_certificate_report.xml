@@ -1,0 +1,11 @@
+<odoo>
+  <record id="report_volunteer_certificate" model="ir.actions.report">
+    <field name="name">Volunteer Certificate</field>
+    <field name="model">volunteer.shift</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">i8_volunteer_demo.report_volunteer_certificate_document</field>
+    <field name="report_file">i8_volunteer_demo.report_volunteer_certificate_document</field>
+    <field name="binding_model_id" ref="model_volunteer_shift"/>
+    <field name="binding_type">report</field>
+  </record>
+</odoo>

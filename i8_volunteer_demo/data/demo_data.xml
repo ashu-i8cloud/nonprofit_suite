@@ -1,0 +1,55 @@
+<odoo>
+  <!-- Two demo companies as chapters -->
+  <record id="demo_company_atlanta" model="res.company">
+    <field name="name">Atlanta Chapter</field>
+  </record>
+  <record id="demo_company_houston" model="res.company">
+    <field name="name">Houston Chapter</field>
+  </record>
+
+  <!-- Two demo events -->
+  <record id="demo_event_gala" model="event.event">
+    <field name="name">Gala Dinner</field>
+    <field name="company_id" ref="i8_volunteer_demo.demo_company_atlanta"/>
+    <field name="date_begin">2025-11-15 18:00:00</field>
+    <field name="date_end">2025-11-15 23:00:00</field>
+  </record>
+  <record id="demo_event_run" model="event.event">
+    <field name="name">Charity Run</field>
+    <field name="company_id" ref="i8_volunteer_demo.demo_company_houston"/>
+    <field name="date_begin">2025-12-05 06:00:00</field>
+    <field name="date_end">2025-12-05 12:00:00</field>
+  </record>
+
+  <!-- Activities for Gala -->
+  <record id="demo_act_gala_desk" model="volunteer.activity">
+    <field name="name">Guest Registration Desk (9–12)</field>
+    <field name="event_id" ref="i8_volunteer_demo.demo_event_gala"/>
+    <field name="start">2025-11-15 18:00:00</field>
+    <field name="end">2025-11-15 21:00:00</field>
+    <field name="capacity">5</field>
+  </record>
+  <record id="demo_act_gala_stage" model="volunteer.activity">
+    <field name="name">Stage Assistance (18–22)</field>
+    <field name="event_id" ref="i8_volunteer_demo.demo_event_gala"/>
+    <field name="start">2025-11-15 18:00:00</field>
+    <field name="end">2025-11-15 22:00:00</field>
+    <field name="capacity">3</field>
+  </record>
+
+  <!-- Activities for Charity Run -->
+  <record id="demo_act_run_hydration" model="volunteer.activity">
+    <field name="name">Hydration Point</field>
+    <field name="event_id" ref="i8_volunteer_demo.demo_event_run"/>
+    <field name="start">2025-12-05 06:00:00</field>
+    <field name="end">2025-12-05 10:00:00</field>
+    <field name="capacity">8</field>
+  </record>
+  <record id="demo_act_run_route" model="volunteer.activity">
+    <field name="name">Route Marshals</field>
+    <field name="event_id" ref="i8_volunteer_demo.demo_event_run"/>
+    <field name="start">2025-12-05 06:00:00</field>
+    <field name="end">2025-12-05 12:00:00</field>
+    <field name="capacity">10</field>
+  </record>
+</odoo>

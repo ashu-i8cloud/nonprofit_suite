@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_volunteer_activity_manager,access_volunteer_activity_manager,model_volunteer_activity,base.group_user,1,1,1,1
+access_volunteer_shift_manager,access_volunteer_shift_manager,model_volunteer_shift,base.group_user,1,1,1,1
+access_broadcast_wizard,access_broadcast_wizard,model_event_broadcast_wizard,base.group_user,1,1,1,0
+access_volunteer_shift_portal,access_volunteer_shift_portal,model_volunteer_shift,base.group_portal,1,1,1,0

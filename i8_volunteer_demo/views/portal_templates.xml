@@ -1,0 +1,151 @@
+<odoo>
+    <template id="portal_chapters" name="Chapters" inherit_id="website.layout">
+        <xpath expr="//main" position="inside">
+            <section class="container my-4">
+                <h3>Select Chapter</h3>
+                <ul class="list-unstyled">
+                    <t t-foreach="companies" t-as="c">
+                        <li class="my-1">
+                            <a t-att-href="'/v/events?chapter=%s' % c.id">
+                                <t t-esc="c.name"/>
+                            </a>
+                        </li>
+                    </t>
+                </ul>
+            </section>
+        </xpath>
+    </template>
+
+    <template id="portal_events" name="Events" inherit_id="website.layout">
+        <xpath expr="//main" position="inside">
+            <section class="container my-4">
+                <h3>Events</h3>
+                <ul class="list-unstyled">
+                    <t t-foreach="events" t-as="e">
+                        <li class="my-1">
+                            <a t-att-href="'/v/event/%s' % e.id">
+                                <t t-esc="e.name"/>
+                            </a>
+                            <span class="text-muted">(
+                                <t t-esc="e.date_begin"/>
+                                →<t t-esc="e.date_end"/>)
+                            </span>
+                        </li>
+                    </t>
+                </ul>
+            </section>
+        </xpath>
+    </template>
+
+    <template id="portal_event_detail" name="Event Detail" inherit_id="website.layout">
+        <xpath expr="//main" position="inside">
+            <section class="container my-4">
+                <t t-if="event">
+                    <h3>
+                        <t t-esc="event.name"/>
+                    </h3>
+                </t>
+                <t t-if="activities">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Activity</th>
+                                <th>Time</th>
+                                <th>Cap</th>
+                                <th>Status</th>
+                                <th/>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="activities" t-as="a">
+                                <tr>
+                                    <td>
+                                        <t t-esc="a.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="a.start"/>
+                                        –
+                                        <t t-esc="a.end"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="a.capacity or '—'"/>
+                                    </td>
+                                    <td>
+                                        <t t-set="mine"
+                                           t-value="next((s for s in my_shifts if s.activity_id.id == a.id), None)"/>
+                                        <t t-if="mine">
+                                            <span t-att-class="'badge ' + ('bg-success' if mine.state in ['confirmed','checkin','checkout'] else ('bg-warning' if mine.state=='pending' else 'bg-secondary'))">
+                                                <t t-esc="mine.state.title()"/>
+                                            </span>
+                                        </t>
+                                        <t t-if="not mine">
+                                            <span class="text-muted">Not signed</span>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="not mine and a.allow_self_signup">
+                                            <button type="button" t-attf-data-id="{{ a.id }}"
+                                                    class="btn btn-primary btn-sm i8-signup">Sign up
+                                            </button>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+                <t t-if="my_shifts">
+                    <h5>My Shifts</h5>
+                    <ul class="list-unstyled">
+                        <t t-foreach="my_shifts" t-as="s">
+                            <li class="my-1">
+                                <t t-esc="s.activity_id.name"/>
+                                —
+                                <t t-esc="s.state.title()"/>
+                                <t t-if="s.state == 'confirmed'">
+                                    <button t-attf-data-id="{{ s.id }}"
+                                            class="btn btn-outline-primary btn-sm i8-checkin">Check-in
+                                    </button>
+                                </t>
+                                <t t-if="s.state == 'checkin'">
+                                    <button t-attf-data-id="{{ s.id }}" class="btn btn-primary btn-sm i8-checkout">
+                                        Check-out
+                                    </button>
+                                </t>
+                            </li>
+                        </t>
+                    </ul>
+                </t>
+            </section>
+            <script>
+                odoo.define('i8_volunteer_demo.portal', function (require) {
+                var ajax = require('web.ajax');
+                document.querySelectorAll('.i8-signup')?.forEach(function(btn){
+                btn.addEventListener('click', async function(){
+                const id = btn.getAttribute('data-id');
+                const res = await ajax.jsonRpc(`/v/activity/${id}/signup`, 'call', {});
+                alert(res.message || (res.ok ? 'Signed up' : 'Failed'));
+                if (res.ok) location.reload();
+                });
+                });
+                document.querySelectorAll('.i8-checkin')?.forEach(function(btn){
+                btn.addEventListener('click', async function(){
+                const id = btn.getAttribute('data-id');
+                const res = await ajax.jsonRpc(`/v/shift/${id}/checkin`, 'call', {});
+                alert(res.message || (res.ok ? 'Checked in' : 'Failed'));
+                if (res.ok) location.reload();
+                });
+                });
+                document.querySelectorAll('.i8-checkout')?.forEach(function(btn){
+                btn.addEventListener('click', async function(){
+                const id = btn.getAttribute('data-id');
+                const res = await ajax.jsonRpc(`/v/shift/${id}/checkout`, 'call', {});
+                alert(res.message || (res.ok ? 'Checked out' : 'Failed'));
+                if (res.ok) location.reload();
+                });
+                });
+                });
+            </script>
+        </xpath>
+    </template>
+</odoo>

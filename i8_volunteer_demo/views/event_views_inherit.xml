@@ -1,0 +1,18 @@
+<odoo>
+  <!-- Smart buttons on Event: Activities and Shifts + Broadcast wizard -->
+  <record id="view_event_form_inherit_i8_volunteer" model="ir.ui.view">
+    <field name="name">event.form.i8.volunteer.buttons</field>
+    <field name="model">event.event</field>
+    <field name="inherit_id" ref="event.view_event_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//header" position="inside">
+        <button name="%(i8_volunteer_demo.action_volunteer_activities)d"
+                string="Volunteer Activities" type="action" class="oe_highlight"/>
+        <button name="%(i8_volunteer_demo.action_volunteer_shifts)d"
+                string="Volunteer Shifts" type="action"/>
+        <button name="%(i8_volunteer_demo.action_open_broadcast_wizard)d"
+                string="Broadcast to Volunteers" type="action" class="btn-primary"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

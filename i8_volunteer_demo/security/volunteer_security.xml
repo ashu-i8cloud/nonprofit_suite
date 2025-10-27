@@ -1,0 +1,24 @@
+<odoo>
+    <!-- Portal users see only their own shifts -->
+    <record id="rule_portal_own_shifts" model="ir.rule">
+        <field name="name">Portal: Own Shifts</field>
+        <field name="model_id" ref="model_volunteer_shift"/>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="domain_force">[('partner_id','=',user.partner_id.id)]</field>
+    </record>
+
+    <record id="rule_portal_read_events" model="ir.rule">
+        <field name="name">Portal: Read Events</field>
+        <field name="model_id" ref="event.model_event_event"/>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="domain_force">[]</field>
+    </record>
+
+    <record id="rule_portal_read_companies" model="ir.rule">
+        <field name="name">Portal: Read Companies (logos)</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="domain_force">[]</field>
+    </record>
+
+</odoo>
