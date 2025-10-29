@@ -1,0 +1,22 @@
+<odoo>
+  <record id="aa_general" model="account.analytic.account">
+    <field name="name">General Donations</field>
+    <field name="code">F-GENERAL</field>
+    <field name="plan_id" ref="gmss_demo_suite.plan_funds"/>
+    <field name="active">True</field>
+  </record>
+
+  <record id="aa_annadan" model="account.analytic.account">
+    <field name="name">Annadan Fund</field>
+    <field name="code">F-ANNADAN</field>
+    <field name="plan_id" ref="gmss_demo_suite.plan_funds"/>
+    <field name="active">True</field>
+  </record>
+
+  <record id="aa_renov" model="account.analytic.account">
+    <field name="name">Renovation Fund</field>
+    <field name="code">F-RENOV</field>
+    <field name="plan_id" ref="gmss_demo_suite.plan_funds"/>
+    <field name="active">True</field>
+  </record>
+</odoo>

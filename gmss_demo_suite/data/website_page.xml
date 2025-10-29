@@ -1,0 +1,18 @@
+<odoo>
+  <!-- Publish a ready 'Support the Temple' page with the donation block -->
+  <record id="page_support_temple" model="website.page">
+    <field name="name">Support the Temple</field>
+    <field name="url">/support-temple</field>
+    <field name="type">qweb</field>
+    <field name="website_published">True</field>
+    <field name="arch" type="xml">
+      <t t-name="gmss_demo_suite.page_support_temple">
+        <t t-call="website.layout">
+          <div id="wrap" class="oe_structure">
+            <t t-call="gmss_donations_ux.gmss_donation_snippet"/>
+          </div>
+        </t>
+      </t>
+    </field>
+  </record>
+</odoo>

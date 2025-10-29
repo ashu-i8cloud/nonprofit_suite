@@ -1,0 +1,15 @@
+<odoo>
+  <record id="event_makar_sankranti" model="event.event">
+    <field name="name">Makar Sankranti Festival 2026</field>
+    <field name="date_begin">2026-01-14 09:00:00</field>
+    <field name="date_end">2026-01-14 18:00:00</field>
+
+    <!-- fields from gmss_demo_suite partner module -->
+    <field name="meal_service">True</field>
+    <field name="expected_meals">500</field>
+    <field name="actual_meals">0</field>
+
+    <!-- keep the rest default; remove auto_confirm -->
+    <!-- stage_id / company_id are optional; omit unless you need specific ones -->
+  </record>
+</odoo>

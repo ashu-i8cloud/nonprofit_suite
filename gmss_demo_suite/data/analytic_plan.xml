@@ -1,0 +1,10 @@
+<odoo>
+  <record id="plan_funds" model="account.analytic.plan">
+    <field name="name">Temple Funds</field>
+    <!-- Either make it global or company-specific. Pick ONE of the next two lines: -->
+    <!-- Global/shared across companies: -->
+    <!--<field name="company_id" eval="False"/>-->
+    <!-- Or tie to main company (usually safer for single-company demos): -->
+    <field name="default_applicability">optional</field>
+  </record>
+</odoo>

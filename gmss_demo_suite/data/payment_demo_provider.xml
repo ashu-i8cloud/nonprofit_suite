@@ -1,0 +1,18 @@
+<odoo>
+  <record id="payment_provider_demo" model="payment.provider">
+    <field name="name">Demo Payment</field>
+    <field name="code">demo</field>
+    <field name="company_id" ref="base.main_company"/>
+    <field name="state">enabled</field>
+    <field name="website_id" ref="website.default_website"/>
+    <field name="available_on_website" eval="True"/>
+    <field name="is_published" eval="True"/>
+    <field name="display_as">Pay with Demo Payment</field>
+    <field name="sequence">10</field>
+    <field name="allow_tokenization" eval="False"/>
+    <field name="support_authorization" eval="False"/>
+    <field name="support_refund" eval="False"/>
+    <field name="support_capture" eval="False"/>
+    <field name="support_void" eval="False"/>
+  </record>
+</odoo>

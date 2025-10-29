@@ -1,0 +1,59 @@
+<odoo>
+  <record id="view_partner_form_gmss" model="ir.ui.view">
+    <field name="name">res.partner.form.gmss.demo</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+
+        <page string="Temple Info">
+          <group>
+            <group>
+              <field name="is_devotee"/>
+              <field name="is_volunteer"/>
+              <field name="is_donor"/>
+              <field name="birthday"/>
+              <field name="preferred_temple"/>
+              <field name="gotra"/>
+            </group>
+            <group>
+              <field name="skills"/>
+              <field name="availability"/>
+              <field name="notes_internal"/>
+            </group>
+          </group>
+        </page>
+
+        <page string="Donations">
+          <group>
+            <field name="total_donations" readonly="1"/>
+          </group>
+
+          <!-- No context/active_id; just point to the sale.order tree view -->
+          <field name="donation_order_ids"
+                 mode="list"
+                 views="{'list': 'gmss_demo_suite.view_sale_order_tree_gmss_donations'}"/>
+        </page>
+      </xpath>
+      <xpath expr="//sheet//div[hasclass('oe_button_box')]" position="inside">
+        <button type="action" class="oe_stat_button" icon="fa-gift"
+                name="%(sale.action_orders)d">
+          <field name="total_donations" widget="statinfo" string="Donations"/>
+        </button>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="view_sale_order_tree_gmss_donations" model="ir.ui.view">
+    <field name="name">sale.order.tree.gmss.donations</field>
+    <field name="model">sale.order</field>
+    <field name="arch" type="xml">
+      <list string="Donation Orders" create="false" edit="false">
+        <field name="name"/>
+        <field name="date_order"/>
+        <field name="amount_total" sum="Total"/>
+        <field name="state"/>
+      </list>
+    </field>
+  </record>
+</odoo>

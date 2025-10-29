@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gmss_birthday_campaign,access_gmss_birthday_campaign,model_gmss_birthday_campaign,base.group_system,1,1,1,1

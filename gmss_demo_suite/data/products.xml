@@ -1,0 +1,50 @@
+<odoo>
+  <!-- Book -->
+  <record id="product_bgita" model="product.product">
+    <field name="name">Bhagavad Gita – Hardcover</field>
+    <field name="default_code">BG-HC</field>
+    <field name="type">consu</field>
+    <field name="categ_id" ref="gmss_demo_suite.pc_books"/>
+    <field name="list_price">22.0</field>
+    <field name="standard_price">12.0</field>
+    <field name="sale_ok">True</field>
+    <field name="purchase_ok">False</field>
+  </record>
+
+  <!-- Prasadam Box -->
+  <record id="product_prasad_box" model="product.product">
+    <field name="name">Prasadam Box</field>
+    <field name="default_code">PRASAD-BOX</field>
+    <field name="type">consu</field>
+    <field name="categ_id" ref="gmss_demo_suite.pc_prasad"/>
+    <field name="list_price">5.0</field>
+    <field name="standard_price">2.0</field>
+    <field name="sale_ok">True</field>
+    <field name="purchase_ok">True</field>
+  </record>
+
+  <!-- Puja Thali Set -->
+  <record id="product_puja_thali" model="product.product">
+    <field name="name">Puja Thali Set</field>
+    <field name="default_code">PUJA-THALI</field>
+    <field name="type">consu</field>
+    <field name="categ_id" ref="gmss_demo_suite.pc_puja"/>
+    <field name="list_price">15.0</field>
+    <field name="standard_price">8.0</field>
+    <field name="sale_ok">True</field>
+    <field name="purchase_ok">True</field>
+  </record>
+
+  <!-- Temple Donation (General) -->
+  <record id="product_donation_general" model="product.product">
+    <field name="name">Temple Donation (General)</field>
+    <field name="default_code">DON-GENERAL</field>
+    <field name="is_donation">True</field>
+    <field name="type">service</field>
+    <field name="categ_id" ref="gmss_demo_suite.pc_donations"/>
+    <field name="list_price">0.0</field>
+    <field name="sale_ok">True</field>
+    <field name="purchase_ok">False</field>
+    <!-- leave accounting fields default; we’ll map analytics at SO/SOL level -->
+  </record>
+</odoo>

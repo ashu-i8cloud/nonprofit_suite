@@ -1,0 +1,14 @@
+<odoo>
+  <record id="pc_books" model="product.category">
+    <field name="name">Books</field>
+  </record>
+  <record id="pc_prasad" model="product.category">
+    <field name="name">Prasad</field>
+  </record>
+  <record id="pc_puja" model="product.category">
+    <field name="name">Puja Items</field>
+  </record>
+  <record id="pc_donations" model="product.category">
+    <field name="name">Donations</field>
+  </record>
+</odoo>

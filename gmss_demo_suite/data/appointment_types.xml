@@ -1,0 +1,26 @@
+<odoo>
+  <!-- Birthday Homa -->
+  <record id="ap_birthday_homa" model="appointment.type">
+    <field name="name">Birthday Homa Service</field>
+    <field name="appointment_duration">1.0</field> <!-- hours -->
+    <field name="product_id" ref="gmss_demo_suite.product_donation_general"/>
+    <field name="message_confirmation">Your Birthday Homa has been booked. Jai Shri Govindaji!</field>
+    <field name="is_published">True</field>
+  </record>
+
+  <!-- Archana -->
+  <record id="ap_archana" model="appointment.type">
+    <field name="name">Archana Service</field>
+    <field name="appointment_duration">0.33</field> <!-- ~20 mins -->
+    <field name="product_id" ref="gmss_demo_suite.product_donation_general"/>
+    <field name="is_published">True</field>
+  </record>
+
+  <!-- Special Puja -->
+  <record id="ap_special_puja" model="appointment.type">
+    <field name="name">Special Puja</field>
+    <field name="appointment_duration">1.5</field> <!-- 90 mins -->
+    <field name="product_id" ref="gmss_demo_suite.product_donation_general"/>
+    <field name="is_published">True</field>
+  </record>
+</odoo>

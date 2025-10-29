@@ -1,0 +1,37 @@
+<odoo>
+    <template id="donation_cross_sell" name="donation cross sell - sales" inherit_id="website_sale.confirmation">
+        <xpath expr="//div[hasclass('justify-content-between')]" position="before">
+            <section class="o_gmss_cta my-4">
+              <div class="container">
+                <div class="alert alert-info d-flex flex-column flex-md-row align-items-md-center gap-2" role="alert" style="border-radius:10px;">
+                  <div class="flex-1">
+                    <strong>Support Annadan (Prasadam Service):</strong>
+                    Your contribution helps us serve meals to devotees and the needy.
+                  </div>
+                  <div class="text-nowrap">
+                    <a href="/donation/pay" class="btn btn-primary">Donate Now</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+        </xpath>
+    </template>
+
+    <template id="donation_cross_sell_event" name="donation cross sell - events" inherit_id="website_event.registration_complete">
+        <xpath expr="//div[1]/div" position="before">
+            <section class="o_gmss_cta my-4">
+              <div class="container">
+                <div class="alert alert-info d-flex flex-column flex-md-row align-items-md-center gap-2" role="alert" style="border-radius:10px;">
+                  <div class="flex-1">
+                    <strong>Support Annadan (Prasadam Service):</strong>
+                    Your contribution helps us serve meals to devotees and the needy.
+                  </div>
+                  <div class="text-nowrap">
+                    <a href="/donation/pay" class="btn btn-primary">Donate Now</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+        </xpath>
+    </template>
+</odoo>
