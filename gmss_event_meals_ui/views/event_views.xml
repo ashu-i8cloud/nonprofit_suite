@@ -1,0 +1,23 @@
+<odoo>
+  <record id="view_event_form_gmss_meals" model="ir.ui.view">
+    <field name="name">event.event.form.gmss.meals</field>
+    <field name="model">event.event</field>
+    <field name="inherit_id" ref="event.view_event_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet//group" position="inside">
+        <field name="meal_service"/>
+      </xpath>
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="Food Prep" invisible="not meal_service">
+          <group>
+            <field name="expected_meals"/>
+            <field name="actual_meals"/>
+          </group>
+          <div class="oe_grey">
+            <span class="fa fa-info-circle"/> Visible only when Meal Service is enabled.
+          </div>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>
