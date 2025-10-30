@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_gmss_birthday_campaign,access_gmss_birthday_campaign,model_gmss_birthday_campaign,base.group_system,1,1,1,1
+gmss_demo_suite.access_gmss_donation_report,access_gmss_donation_report,gmss_demo_suite.model_gmss_donation_report,base.group_user,1,1,1,1

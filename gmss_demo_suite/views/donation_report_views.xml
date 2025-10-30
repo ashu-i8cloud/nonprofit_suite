@@ -1,0 +1,79 @@
+<odoo>
+  <!-- Tree View -->
+  <record id="view_gmss_donation_report_tree" model="ir.ui.view">
+    <field name="name">gmss.donation.report.tree</field>
+    <field name="model">gmss.donation.report</field>
+    <field name="arch" type="xml">
+      <list string="Donation Summary" create="false" edit="false">
+        <field name="date_order"/>
+        <field name="partner_id"/>
+        <field name="product_id"/>
+        <field name="donation_category_id"/>
+        <field name="amount_total" sum="Total Donation"/>
+        <field name="state"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- Pivot View -->
+  <record id="view_gmss_donation_report_pivot" model="ir.ui.view">
+    <field name="name">gmss.donation.report.pivot</field>
+    <field name="model">gmss.donation.report</field>
+    <field name="arch" type="xml">
+      <pivot string="Donations Analysis">
+        <field name="partner_id" type="row"/>
+        <field name="donation_category_id" type="row"/>
+        <field name="date_order" type="col" interval="month"/>
+        <field name="amount_total" type="measure"/>
+      </pivot>
+    </field>
+  </record>
+
+  <!-- Graph View -->
+  <record id="view_gmss_donation_report_graph" model="ir.ui.view">
+    <field name="name">gmss.donation.report.graph</field>
+    <field name="model">gmss.donation.report</field>
+    <field name="arch" type="xml">
+      <graph string="Donations by Fund" type="bar">
+        <field name="donation_category_id" type="row"/>
+        <field name="amount_total" type="measure"/>
+      </graph>
+    </field>
+  </record>
+
+  <!-- Search View -->
+  <record id="view_gmss_donation_report_search" model="ir.ui.view">
+    <field name="name">gmss.donation.report.search</field>
+    <field name="model">gmss.donation.report</field>
+    <field name="arch" type="xml">
+      <search string="Search Donations">
+        <field name="partner_id"/>
+        <field name="donation_category_id"/>
+        <filter name="this_month" string="This Month"
+                domain="[('date_order','>=',context_today().replace(day=1))]"/>
+        <group expand="0" string="Group By">
+          <filter name="group_partner" string="Donor" context="{'group_by':'partner_id'}"/>
+          <filter name="group_fund" string="Fund" context="{'group_by':'donation_category_id'}"/>
+          <filter name="group_date" string="Date" context="{'group_by':'date_order:month'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!-- Action -->
+  <record id="action_gmss_donation_report" model="ir.actions.act_window">
+    <field name="name">Donation Summary</field>
+    <field name="res_model">gmss.donation.report</field>
+    <field name="view_mode">pivot,graph,list</field>
+    <field name="context">{}</field>
+  </record>
+
+  <!-- Menu -->
+  <menuitem id="menu_gmss_donations_root" name="Donations" sequence="10"
+  web_icon="gmss_demo_suite,static/description/icon.png"/>
+  <menuitem id="menu_gmss_donation_reports" name="Reports"
+            parent="menu_gmss_donations_root" sequence="20"/>
+  <menuitem id="menu_gmss_donation_summary" name="Donation Summary"
+            parent="menu_gmss_donation_reports"
+            action="gmss_demo_suite.action_gmss_donation_report" sequence="30"/>
+</odoo>

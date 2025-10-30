@@ -31,6 +31,7 @@
         "security/ir.model.access.csv",
         "views/res_partner_views.xml",
         "views/event_templates.xml",
+        "views/donation_report_views.xml",
     ],
     "installable": True,
     "application": False,

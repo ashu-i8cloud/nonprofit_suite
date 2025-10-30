@@ -2,16 +2,16 @@
   <record id="mail_template_birthday_seva" model="mail.template">
     <field name="name">GMSS | Birthday Seva Invitation</field>
     <field name="model_id" ref="base.model_res_partner"/>
-    <field name="subject">Blessings on your upcoming Birthday, ${object.name or ''} 🙏</field>
-    <field name="email_from">${(object.company_id.email or user.email) if object.company_id else user.email}</field>
-    <field name="email_to">${object.email or ''}</field>
+    <field name="subject">Blessings on your upcoming Birthday, {{ object.name or ''}} 🙏</field>
+    <field name="email_from">{{ (object.company_id.email or user.email) if object.company_id else user.email }}</field>
+    <field name="email_to">{{ object.email or ''}}</field>
     <field name="auto_delete" eval="True"/>
     <field name="body_html" type="html">
       <div style="font-family:Arial,sans-serif">
-        <p>Dear ${object.name or 'Devotee'},</p>
+        <p>Dear <t t-out="object.name or 'Devotee'"/>,</p>
         <p>Your birthday is approaching and we would be honored to perform a special <strong>Birthday Homa</strong> on your behalf at the temple.</p>
         <p>
-          <a href="/appointments/${ref('gmss_demo_suite.ap_birthday_homa')}" style="background:#3b82f6;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none">Book Birthday Homa</a>
+          <a href="/appointment/10" style="background:#3b82f6;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none">Book Birthday Homa</a>
         </p>
         <p>May Sri Govindaji bless you with good health and joy.</p><br/>
         <p>— Sri Govindaji Gaudiya Math</p>

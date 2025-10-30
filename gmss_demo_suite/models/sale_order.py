@@ -3,7 +3,7 @@ from odoo import api, fields, models
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         order = super().create(vals)
         # Website order?
